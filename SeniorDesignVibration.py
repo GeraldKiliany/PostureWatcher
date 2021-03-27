@@ -28,7 +28,8 @@ GPIO.setup(vibPinOut, GPIO.OUT)
 
 
 #main loop
-while True:    
+#while True:
+while timeElapsed < 15 #use when booting at startup testing
     timeElapsed+=1
     
     vibMode = GPIO.input(17) #read pin 17 for if vibration switch on or off
@@ -53,5 +54,6 @@ while True:
     
     time.sleep(samplePeriod)
     GPIO.output(vibPinOut, GPIO.LOW)
-    
+
+quit() #program will end if testing booting from startup
     

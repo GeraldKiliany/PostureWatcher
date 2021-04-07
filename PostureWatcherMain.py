@@ -2,6 +2,8 @@
 #Gerald Kiliany
 
 #Read input from Force Sensitive Resistors through ADC (MCP3008)
+#Determine if seated
+#Send sensor readings
 
 
 #import necessary libraries
@@ -23,7 +25,7 @@ timeElapsed = 0
 vibMode = False
 vibrating = False
 vibPinIn = 17 #GPIO pin to read vibration mode input
-vibPinOut = 26 #GPIO pin for vibration motor
+vibPinOut = 7 #GPIO pin for vibration motor #7 on pcb, used to be 26
 seatCount = 0
 oversittingThresh = 5
 notSittingThresh = 2
@@ -109,11 +111,12 @@ while timeElapsed < 5069: #for debugging don't run forever
         if(isSeated) :
             
             currValues = [FSR_value0, FSR_value1, FSR_value2, FSR_value3, FSR_value4] 
-            with open('mlData.csv', 'a', newline = '') as csvfile:
+            with open('mlData.csv', 'a') as csvfile:
                 outWriter = csv.writer(csvfile, delimiter = ' ')
                 outWriter.writerow(currValues)
             
         time.sleep(samplePeriod)
         GPIO.output(vibPinOut, GPIO.LOW)
         #end
-mcp0.close() #end comms with mcp device 
+mcp0.close() #end comms with mcp device
+#shut down raspberry pi

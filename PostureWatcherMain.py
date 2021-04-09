@@ -22,7 +22,7 @@ FSR_channel3 = 3
 FSR_channel4 = 4
 seatedThresh = 30 #threshold for pressure to consider a user to be seated (1024 range)
 timeElapsed = 0
-vibMode = False
+vibMode = True
 vibrating = False
 vibPinIn = 17 #GPIO pin to read vibration mode input
 vibPinOut = 7 #GPIO pin for vibration motor #7 on pcb, used to be 26
@@ -104,6 +104,9 @@ while timeElapsed < 5069: #for debugging don't run forever
                 GPIO.output(vibPinOut, GPIO.HIGH)
             else:
                 print("Seated too long")
+               # Send to bluetooth connected device, seated or not,
+
+               
                # print("Pressure Pad Value: ", FSR_value0)    
                # print("Seated or not: ", isSeated)
         

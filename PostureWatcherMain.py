@@ -62,7 +62,6 @@ def readADC(adcnum):
 while timeElapsed < 5069: #for debugging don't run forever
         timeElapsed+=1
        
-        vibMode = GPIO.input(17) #read pin 17 for if vibration switch on or off
         
 
         
@@ -71,6 +70,9 @@ while timeElapsed < 5069: #for debugging don't run forever
         FSR_value2 = readADC(FSR_channel2) #sensor 2
         FSR_value3 = readADC(FSR_channel3) #sensor 3
         FSR_value4 = readADC(FSR_channel4) #sensor 4
+        FSR_value5 = readADC(5) #sensor 5
+        FSR_value6 = readADC(6) #sensor 6
+        FSR_value7 = readADC(7) #sensor 7
         #adc = MCP3008()
         #FSR_value0 = adc.read(channel = 0)
         #FSR_value1 = adc.read(channel = 1)
